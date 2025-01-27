@@ -29,6 +29,43 @@ const AllDesignations = () => {
     url?: string;
     active?: boolean;
   }
+  interface ActionItem {
+    eventKey: string;
+    label: string;
+    type: 'redirect' | 'function';
+    url?: string;
+    callback?: () => void;
+    className?: string;
+    divider?: boolean;
+  }
+  const actions: ActionItem[] = [
+    {
+      eventKey: '1',
+      label: 'View',
+      type: 'function',
+      callback: () => alert('View action clicked'),
+    },
+    {
+      eventKey: '2',
+      label: 'Export',
+      type: 'function',
+      callback: () => console.log('Export action clicked'),
+    },
+    {
+      eventKey: '3',
+      label: 'Go to Google',
+      type: 'redirect',
+      url: 'https://www.google.com',
+    },
+    {
+      eventKey: '4',
+      label: 'Remove',
+      type: 'function',
+      callback: () => alert('Remove action clicked'),
+      className: 'text-danger',
+      divider: true,
+    },
+  ];
   // console.log(Designation
   const defaultBreadcrumbItems: PageBreadcrumbItem[] = [
     {
@@ -72,7 +109,7 @@ const AllDesignations = () => {
       cell: () => (
         <RevealDropdownTrigger>
           <RevealDropdown>
-            <ActionDropdownItems />
+            <ActionDropdownItems actions={actions} />
           </RevealDropdown>
         </RevealDropdownTrigger>
       ),

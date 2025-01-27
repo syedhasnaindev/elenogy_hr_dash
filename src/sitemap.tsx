@@ -105,6 +105,14 @@ export const routes: RouteItems[] = [
             path: 'analogy/user-info/user-info',
             pathName: 'user-info',
           },
+          {
+            name: 'All User Information',
+            active: true,
+            path: 'analogy/user-info/all-user-info',
+            pathName: 'all-user-info',
+          },
+         
+
 
         ]
       },

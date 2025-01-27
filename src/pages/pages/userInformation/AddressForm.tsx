@@ -26,7 +26,7 @@ const UserInfo : React.FC<AddressFormProps> = ({ value, onChange }) => {
                 label="Address Type"
               >
                 <Form.Control type="text" placeholder="Address Type" 
-                value={value.address.Address_Type}
+                value={value.Address_Type}
                 onChange={(e) => onChange('Address_Type', e.target.value)}
                 />
               </FloatingLabel>
@@ -37,7 +37,7 @@ const UserInfo : React.FC<AddressFormProps> = ({ value, onChange }) => {
                 label="Last Name"
               >
                 <Form.Control type="text" placeholder="Street" 
-                value={value.address.Street}
+                value={value.Street}
                 onChange={(e)=>onChange('Street', e.target.value)}
                 />
               </FloatingLabel>
@@ -49,7 +49,7 @@ const UserInfo : React.FC<AddressFormProps> = ({ value, onChange }) => {
                 label="City"
               >
                 <Form.Control type="text" placeholder="City"
-                value={value.address.City}
+                value={value.City}
                 onChange={(e)=>onChange('City', e.target.value)}
                 />
               </FloatingLabel>
@@ -60,7 +60,7 @@ const UserInfo : React.FC<AddressFormProps> = ({ value, onChange }) => {
                 label="State"
               >
                 <Form.Control type="text" placeholder="State"
-                value={value.address.State}
+                value={value.State}
                 onChange={(e)=>onChange('State', e.target.value)}
                 />
               </FloatingLabel>
@@ -71,7 +71,7 @@ const UserInfo : React.FC<AddressFormProps> = ({ value, onChange }) => {
                 label="Zip Code"
               >
                 <Form.Control type="email" placeholder="Zip Code" 
-                value={value.address.Zip_Code}
+                value={value.Zip_Code}
                 onChange={(e)=>onChange('Zip_Code', e.target.value)}
                 />
               </FloatingLabel>
@@ -82,7 +82,7 @@ const UserInfo : React.FC<AddressFormProps> = ({ value, onChange }) => {
                 label="Country"
               >
                 <Form.Control type="text" placeholder="Country" 
-                value={value.address.Country}
+                value={value.Country}
                 onChange={(e)=>onChange('Country', e.target.value)}
                 />
               </FloatingLabel>

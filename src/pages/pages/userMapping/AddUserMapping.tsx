@@ -9,6 +9,7 @@ const AddUserMapping = () => {
     mappingDetails: '',
     // Add other fields as necessary
   });
+  
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 

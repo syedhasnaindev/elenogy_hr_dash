@@ -47,6 +47,17 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({ value, onChange }) 
                 />
               </FloatingLabel>
             </Col>
+            <Col sm={6} md={6}>
+              <FloatingLabel
+                controlId="floatingInputGrid"
+                label="Blood Group"
+              >
+                <Form.Control type="text" placeholder="Blood Group"
+                value = {value.Blood_Group}
+                onChange={(e) => onChange('Blood_Group', e.target.value)}
+                />
+              </FloatingLabel>
+            </Col>
            
             <Col sm={6} md={4}>
             <FloatingLabel

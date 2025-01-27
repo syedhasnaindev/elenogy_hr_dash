@@ -9,14 +9,30 @@ import PersonalInfoForm from './PersonalInfoForm';
 import AddressForm from './AddressForm';
 import QualificationForm from './QualificationForm';
 import { useState } from 'react';
+import { createPersonalInformation } from './../../../services/personalInformationService'; // Adjust the path based on your file structure
+
 // import {FormWizard} from 'components/form-wizard/FormWizard';
 const UserInfo = () => {
   const steps = ['Personal Info', 'Address', 'Qualification'];
-  
 
-  const submitForm = () => {
-    console.log('Form submitted');
-    
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const submitForm = async () => {
+    // e.preventDefault();
+    setLoading(true);
+    setSuccessMessage('');
+    setErrorMessage('');
+
+    try {
+      const response = await createPersonalInformation(formData);
+      setSuccessMessage('Personal information created successfully!');
+    } catch (error) {
+      setErrorMessage('Failed to create personal information. Please try again.');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const [formData, setFormData] = useState({
@@ -29,22 +45,19 @@ const UserInfo = () => {
     DOB: '',
     Registered_On: '',
     Blood_Group: '',
-    address:{
-      Address_Type:'',
-      Street:'',
-      City:'',
-      State:'',
-      Zip_Code:'',
-      Country:'',
-    },
-    Qualification:{
-      Degree_Type:'',
-      Degree_Name:'',
-      Institute_Name:'',
-      Completed_On:'',
-      Percentage:'',
-      Grade:'',  
-    }
+    Address_Type: '',
+    Street: '',
+    City: '',
+    State: '',
+    Zip_Code: '',
+    Country: '',
+    Degree_Type: '',
+    Degree_Name: '',
+    Institute_Name: '',
+    Completed_On: '',
+    Percentage: '',
+    Grade: '',
+
   });
 
   const handleInputChange = (name: string, value: string) => {
@@ -64,10 +77,10 @@ const UserInfo = () => {
     // }
   };
   const handleStepContent = (step: number) => {
-    switch(step) {
-      case 0: return <PersonalInfoForm value={formData} onChange={handleInputChange}  />;
-      case 1: return <AddressForm value={formData.address} onChange={handleInputChange} />;
-      case 2: return <QualificationForm value={formData.Qualification} onChange={handleInputChange} />;
+    switch (step) {
+      case 0: return <PersonalInfoForm value={formData} onChange={handleInputChange} />;
+      case 1: return <AddressForm value={formData} onChange={handleInputChange} />;
+      case 2: return <QualificationForm value={formData} onChange={handleInputChange} />;
       // case 1: return <AddressForm />;
       // case 2: return <PaymentForm />;
     }
@@ -79,15 +92,15 @@ const UserInfo = () => {
       <h2 className="mb-4">Create a user</h2>
       {/* <Form > */}
       <FormWizard
-      
-      steps={steps}
-     //  optionalSteps={[1]} // Address is optional
-      renderStepContent={handleStepContent}
-      onFinish={() => submitForm()}
-     />
+
+        steps={steps}
+        //  optionalSteps={[1]} // Address is optional
+        renderStepContent={handleStepContent}
+        onFinish={() => submitForm()}
+      />
       {/* </Form> */}
-     
-      
+
+
     </div>
   );
 };

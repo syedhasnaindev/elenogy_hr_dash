@@ -184,6 +184,7 @@ import AllPersonalInformation from 'pages/pages/personalInformation/AllPersonalI
 import AllAddresses from 'pages/pages/address/AllAddresses';
 import AllSalaries from 'pages/pages/salary/AllSalaries';
 import AllRoles from 'pages/pages/role/AllRoles';
+import UserDetails from 'pages/pages/userInformation/UserDetails'
 
 const FontAwesomeExample = lazy(
   () => import('pages/modules/components/FontAwesomeExample')
@@ -210,6 +211,7 @@ import TravelLandingLayout from 'layouts/TravelLandingLayout';
 import AllDesignations from 'pages/pages/designation/AllDesignations';
 import AddRole from 'pages/pages/role/AddRole';
 import UserInfo from 'pages/pages/userInformation/UserInfo';
+import AllUserInfo from 'pages/pages/userInformation/AllUserInfo';
 
 const routes: RouteObject[] = [
   {
@@ -475,35 +477,45 @@ const routes: RouteObject[] = [
                     path: 'all-designations',
                     element: <AllDesignations />
                   },
-                 
+
                 ]
               },
+
+              {
+                path: 'user-details/:userId',
+                element: <UserDetails />
+              },
+
               {
                 path: 'designations',
                 children: [
-                 
+
                   {
                     path: 'all-designations',
                     element: <AllDesignations />
                   },
-                 
+
                 ]
               },
               {
                 path: 'user-info',
                 children: [
-                 
+
                   {
                     path: 'user-info',
                     element: <UserInfo />
                   },
-                 
+                  {
+                    path: 'all-user-info',
+                    element: <AllUserInfo />
+                  },
+
                 ]
               },
               {
                 path: 'roles',
                 children: [
-                 
+
                   {
                     path: 'all-roles',
                     element: <AllRoles />
@@ -512,62 +524,62 @@ const routes: RouteObject[] = [
                     path: 'add-roles',
                     element: <AddRole />
                   },
-                 
+
                 ]
               },
               {
                 path: 'qualification',
                 children: [
-                 
+
                   {
                     path: 'all-qualification',
                     element: <AllQualifications />
                   },
-                 
+
                 ]
               },
               {
                 path: 'credentials',
                 children: [
-                 
+
                   {
                     path: 'all-credentials',
                     element: <AllCredentials />
                   },
-                 
+
                 ]
               },
               {
                 path: 'salary',
                 children: [
-                 
+
                   {
                     path: 'all-salary',
                     element: <AllSalaries />
                   },
-                 
+
                 ]
               },
               {
                 path: 'address',
                 children: [
-                 
+
                   {
                     path: 'all-address',
                     element: <AllAddresses />
                   },
-                 
+
                 ]
               },
               // {
               //   path: 'address',
               //   children: [
-                 
+
               //     {
               //       path: 'all-address',
               //       element: <AllAddresses />
               //     },
-                 
+
               //   ]
               // },
               {
