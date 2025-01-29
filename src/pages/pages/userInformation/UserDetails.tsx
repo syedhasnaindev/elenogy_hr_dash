@@ -20,24 +20,25 @@ import {
   faThumbtack
 } from '@fortawesome/free-solid-svg-icons';
 import ScrollSpy from 'components/base/ScrollSpy';
-import {usePersonalInformationById} from 'hooks/usePersonalInformation'
+import { usePersonalInformationById } from 'hooks/usePersonalInformation'
 import { useParams } from 'react-router-dom';
+import UserSetting from './UserSettings';
 
 const UserDetails = () => {
   const [openOffcanvas, setOpenOffcanvas] = useState(false);
   const { userId } = useParams(); // Extract the dynamic parameter
-console.log(userId,"User_Id");
+  console.log(userId, "User_Id");
 
   const { personalInformation, loading } = usePersonalInformationById(userId) as {
-          personalInformation: any | null;
-          loading: boolean;
-      };
-console.log(personalInformation,"Personal Information");
+    personalInformation: any | null;
+    loading: boolean;
+  };
+  console.log(personalInformation.qualification, "Personal Information");
 
   return (
-    
+
     <div>
-        
+
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="pb-9">
         <Row className="align-items-center justify-content-between g-3 mb-3">
@@ -55,7 +56,7 @@ console.log(personalInformation,"Personal Information");
                   <FontAwesomeIcon icon={faBars} />
                 </Button>
               </div>
-              <Button
+              {/* <Button
                 variant="primary"
                 startIcon={
                   <FontAwesomeIcon icon={faEnvelope} className="me-2" />
@@ -83,7 +84,7 @@ console.log(personalInformation,"Personal Information");
                     Delete Lead
                   </Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
             </div>
           </Col>
         </Row>
@@ -93,42 +94,43 @@ console.log(personalInformation,"Personal Information");
             <div className="sticky-leads-sidebar">
               <div className="lead-details-offcanvas bg-body scrollbar">
                 <div className="d-flex justify-content-between align-items-center mb-2 d-md-none">
-                  <h3 className="mb-0">Lead Details</h3>
+                  <h3 className="mb-0">Lead Details </h3>
                 </div>
                 <LeadProfileCard className="mb-3"
-                 name={personalInformation.First_Name+" "+personalInformation.Last_Name}
-                 role=''
-                 company=''
-                 avatarSrc='https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-cartoon-man-avatar-vector-ilustration-png-image_6111064.png' 
-                 
-                 />
-                <AboutLeadCard className="mb-3" 
-                login_name={personalInformation.Login_Name}
-                Personal_Email={personalInformation.Personal_Email}
-                Secondary_Email={personalInformation.Secondary_Email}
-                Registered_On={personalInformation.Registered_On}
-                Mobile={personalInformation.Mobile}
-                DOB={personalInformation.DOB}
-                Blood_Group={personalInformation.Blood_Group}
-                User_Id={personalInformation.User_Id}
-                
+                  name={personalInformation.First_Name + " " + personalInformation.Last_Name}
+                  role=''
+                  company=''
+                  avatarSrc='https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-cartoon-man-avatar-vector-ilustration-png-image_6111064.png'
+
                 />
-                <UserQualifications 
+                <AboutLeadCard className="mb-3"
+                  login_name={personalInformation.Login_Name}
+                  Personal_Email={personalInformation.Personal_Email}
+                  Secondary_Email={personalInformation.Secondary_Email}
+                  Registered_On={personalInformation.Registered_On}
+                  Mobile={personalInformation.Mobile}
+                  DOB={personalInformation.DOB}
+                  Blood_Group={personalInformation.Blood_Group}
+                  User_Id={personalInformation.User_Id}
+
+                />
+                <UserQualifications
+                  qualifications={personalInformation.qualification}
                 // Education_ID = {personalInformation.Qualifications.Education_ID}
-                Degree_Type ={personalInformation.qualification.Degree_Type}
-                Degree_Name={personalInformation.qualification.Degree_Name}
-                Institute_Name={personalInformation.qualification.Institute_Name}
-                Percentage={personalInformation.qualification.Percentage}
-                Grade={personalInformation.qualification.Grade}
-                User_Id={personalInformation.qualification.User_Id}
-                Completed_On={personalInformation.qualification.Completed_On}
+                // Degree_Type ={personalInformation.qualification[0].Degree_Type}
+                // Degree_Name={personalInformation.qualification[0].Degree_Name}
+                // Institute_Name={personalInformation.qualification[0].Institute_Name}
+                // Percentage={personalInformation.qualification[0].Percentage}
+                // Grade={personalInformation.qualification[0].Grade}
+                // User_Id={personalInformation.qualification[0].User_Id}
+                // Completed_On={personalInformation.qualification[0].Completed_On}
                 />
               </div>
             </div>
           </Col>
           <Col md={7} xl={8}>
             <div className="lead-details-container">
-              <ScrollSpy>
+              {/* <ScrollSpy>
                 <LeadDetailsNavbar />
 
                 <ScrollSpy.Content
@@ -159,7 +161,12 @@ console.log(personalInformation,"Personal Information");
                 >
                   <LeadAttachments />
                 </ScrollSpy.Content>
-              </ScrollSpy>
+              </ScrollSpy> */}
+              {(personalInformation.Designation && personalInformation.Role && personalInformation.Department) ?
+                (<div>no data</div>)  :(
+                  <UserSetting User_Id={personalInformation.User_Id} />
+                )
+            }
             </div>
           </Col>
         </Row>

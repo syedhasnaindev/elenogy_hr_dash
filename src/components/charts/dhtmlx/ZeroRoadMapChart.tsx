@@ -101,45 +101,40 @@ const ZeroRoadMapChart = ({
 
       const zoomConfig = {
         levels: [
-          {
-            name: 'month',
-            scales: [
-              { unit: 'month', format: '%F, %Y' },
-              { unit: 'week', format: 'Week #%W' }
-            ]
-          },
+            {
+                name: "Hours",
+                scales: [
+                    { unit: "minute", step: 30, format: "%H:%i" }, // Example of string format
+                ],
+            },
+            {
+                name: "Days",
+                scales: [
+                    { unit: "hour", step: 1, format: "%H:%i" }, // Consistent string format
+                ],
+            },
+            {
+                name: "Weeks",
+                scales: [
+                    { unit: "day", step: 1, format: "%d %M" },
+                    { unit: "hour", step: 12, format: "%H:%i" },
+                ],
+            },
+            {
+                name: "Months",
+                scales: [
+                    { unit: "week", step: 1, format: "%W" },
+                    { unit: "day", step: 1, format: "%d %M" },
+                ],
+            },
+        ],
+    };
+    
+    // Pass the corrected config to Gantt
+    gantt.ext.zoom.init(zoomConfig);
+    
 
-          {
-            name: 'year',
-            scales: [{ unit: 'year', step: 1, format: '%Y' }]
-          },
-          {
-            name: 'week',
-            scales: [
-              {
-                unit: 'week',
-                step: 1,
-                format: (date: Date) => {
-                  const dateToStr = gantt.date.date_to_str('%d %M');
-                  const endDate = gantt.date.add(date, -6, 'day');
-                  const weekNum = gantt.date.date_to_str('%W')(date);
-                  return (
-                    '#' +
-                    weekNum +
-                    ', ' +
-                    dateToStr(date) +
-                    ' - ' +
-                    dateToStr(endDate)
-                  );
-                }
-              },
-              { unit: 'day', step: 1, format: '%j %D' }
-            ]
-          }
-        ]
-      };
-
-      gantt.ext.zoom.init(zoomConfig);
+      // gantt.ext.zoom.init(zoomConfig);
       gantt.ext.zoom.setLevel('week');
       // gantt.ext.zoom.attachEvent('onAfterZoom', function (level, config) {
       //   document.querySelector("input[value='" + config.name + "']").checked = true;

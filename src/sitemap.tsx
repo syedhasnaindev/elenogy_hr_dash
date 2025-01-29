@@ -136,6 +136,12 @@ export const routes: RouteItems[] = [
 
             // ]
           },
+          {
+            name: 'Add Department',
+            active: true,
+            path: 'analogy/departments/add-department',
+            pathName: 'add-department',
+          },
 
         ]
       },

@@ -104,6 +104,7 @@ import Error404 from 'pages/error/Error404';
 import Error403 from 'pages/error/Error403';
 import Error500 from 'pages/error/Error500';
 import AllDepartments from 'pages/pages/department/AllDepartments';
+import AddDepartment from 'pages/pages/department/AddDepartment';
 import AdvanceTableExample from 'pages/modules/tables/AdvanceTableExample';
 import SimpleSignIn from 'pages/pages/authentication/simple/SignIn';
 import SimpleSignUp from 'pages/pages/authentication/simple/SignUp';
@@ -212,6 +213,7 @@ import AllDesignations from 'pages/pages/designation/AllDesignations';
 import AddRole from 'pages/pages/role/AddRole';
 import UserInfo from 'pages/pages/userInformation/UserInfo';
 import AllUserInfo from 'pages/pages/userInformation/AllUserInfo';
+import AddDesignation from 'pages/pages/designation/AddDesignation';
 
 const routes: RouteObject[] = [
   {
@@ -474,6 +476,10 @@ const routes: RouteObject[] = [
                     element: <AllDepartments />
                   },
                   {
+                    path: 'add-department',
+                    element: <AddDepartment />
+                  },
+                  {
                     path: 'all-designations',
                     element: <AllDesignations />
                   },
@@ -493,6 +499,10 @@ const routes: RouteObject[] = [
                   {
                     path: 'all-designations',
                     element: <AllDesignations />
+                  },
+                  {
+                    path: 'add-designations',
+                    element: <AddDesignation />
                   },
 
                 ]
