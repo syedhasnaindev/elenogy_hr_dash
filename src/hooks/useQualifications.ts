@@ -21,4 +21,4 @@ export const useQualifications = () => {
   }, []);
 
   return { qualifications, loading };
-}; 
+};

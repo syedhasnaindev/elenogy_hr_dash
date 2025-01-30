@@ -6,10 +6,10 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 const AddUserMapping = () => {
   const [userMappingData, setUserMappingData] = useState({
     userId: '',
-    mappingDetails: '',
+    mappingDetails: ''
     // Add other fields as necessary
   });
-  
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -65,4 +65,4 @@ const AddUserMapping = () => {
   );
 };
 
-export default AddUserMapping; 
+export default AddUserMapping;

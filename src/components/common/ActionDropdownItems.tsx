@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Define the type for each action item
 interface ActionItem {
@@ -18,7 +18,9 @@ interface ActionDropdownItemsProps {
   actions?: ActionItem[]; // Optional, if not provided, default actions will be used
 }
 
-const ActionDropdownItems: React.FC<ActionDropdownItemsProps> = ({ actions }) => {
+const ActionDropdownItems: React.FC<ActionDropdownItemsProps> = ({
+  actions
+}) => {
   // Default actions for demo if no actions are passed
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -27,19 +29,19 @@ const ActionDropdownItems: React.FC<ActionDropdownItemsProps> = ({ actions }) =>
       eventKey: '1',
       label: 'View',
       type: 'function',
-      callback: () => alert('View action clicked'),
+      callback: () => alert('View action clicked')
     },
     {
       eventKey: '2',
       label: 'Export',
       type: 'function',
-      callback: () => console.log('Export action clicked'),
+      callback: () => console.log('Export action clicked')
     },
     {
       eventKey: '3',
       label: 'Go to Google',
       type: 'redirect',
-      url: 'https://www.google.com',
+      url: 'https://www.google.com'
     },
     {
       eventKey: '4',
@@ -47,8 +49,8 @@ const ActionDropdownItems: React.FC<ActionDropdownItemsProps> = ({ actions }) =>
       type: 'function',
       callback: () => alert('Remove action clicked'),
       className: 'text-danger',
-      divider: true,
-    },
+      divider: true
+    }
   ];
 
   // Use the passed actions or fallback to default actions
@@ -61,7 +63,7 @@ const ActionDropdownItems: React.FC<ActionDropdownItemsProps> = ({ actions }) =>
         window.location.href = action.url;
       } else {
         // Internal route, use navigate to switch views
-        navigate(action.url); 
+        navigate(action.url);
       }
     } else if (action.type === 'function' && action.callback) {
       action.callback(); // Call the provided callback function

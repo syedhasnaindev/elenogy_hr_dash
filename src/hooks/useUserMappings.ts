@@ -21,4 +21,4 @@ export const useUserMappings = () => {
   }, []);
 
   return { userMappings, loading };
-}; 
+};

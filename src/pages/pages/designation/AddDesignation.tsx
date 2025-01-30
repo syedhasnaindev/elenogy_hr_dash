@@ -21,7 +21,7 @@ const AddDesignation = () => {
   const [designationData, setDesignationData] = useState<DesignationData>({
     Designation_Name: '',
     Description: '',
-    Department_Id: '',
+    Department_Id: ''
   });
 
   // Ensure correct type usage
@@ -32,9 +32,11 @@ const AddDesignation = () => {
 
   const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setDesignationData((prevData) => ({ ...prevData, [name]: value }));
+    setDesignationData(prevData => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,7 +88,7 @@ const AddDesignation = () => {
               disabled={loading}
             >
               <option value="">Select Department</option>
-              {departments?.map((dept) => (
+              {departments?.map(dept => (
                 <option key={dept.Department_ID} value={dept.Department_ID}>
                   {dept.Department_Name}
                 </option>

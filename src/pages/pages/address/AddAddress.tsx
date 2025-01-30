@@ -6,7 +6,7 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 const AddAddress = () => {
   const [addressData, setAddressData] = useState({
     street: '',
-    city: '',
+    city: ''
     // Add other fields as necessary
   });
   const [loading, setLoading] = useState(false);
@@ -64,4 +64,4 @@ const AddAddress = () => {
   );
 };
 
-export default AddAddress; 
+export default AddAddress;

@@ -14,27 +14,27 @@ const root = ReactDOM.createRoot(
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
-
 root.render(
   <React.StrictMode>
     <Auth0Provider
-     domain="dev-isv8tpi8osjnxqi3.us.auth0.com"
-     clientId="VkBdGIFwbTkXMMoP8kcu04oWq3uN0dRT"
-     authorizationParams={{
-       redirect_uri: 'http://localhost:3000/pages/authentication/simple/sign-in',
-       audience: "https://dev-isv8tpi8osjnxqi3.us.auth0.com/api/v2/",
-       scope: "openid profile email"
-     }}
+      domain="dev-isv8tpi8osjnxqi3.us.auth0.com"
+      clientId="VkBdGIFwbTkXMMoP8kcu04oWq3uN0dRT"
+      authorizationParams={{
+        redirect_uri:
+          'http://localhost:3000/pages/authentication/simple/sign-in',
+        audience: 'https://dev-isv8tpi8osjnxqi3.us.auth0.com/api/v2/',
+        scope: 'openid profile email'
+      }}
     >
-    <AppProvider>
-      <SettingsPanelProvider>
-        <ChatWidgetProvider>
-          <BreakpointsProvider>
-            <RouterProvider router={router} />
-          </BreakpointsProvider>
-        </ChatWidgetProvider>
-      </SettingsPanelProvider>
-    </AppProvider>
+      <AppProvider>
+        <SettingsPanelProvider>
+          <ChatWidgetProvider>
+            <BreakpointsProvider>
+              <RouterProvider router={router} />
+            </BreakpointsProvider>
+          </ChatWidgetProvider>
+        </SettingsPanelProvider>
+      </AppProvider>
     </Auth0Provider>
   </React.StrictMode>
 );

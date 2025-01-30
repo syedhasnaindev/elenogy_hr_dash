@@ -1,7 +1,7 @@
 import { Stack } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useDepartments } from '../../hooks/useDepartments';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 import starterImg from 'assets/img/spot-illustrations/2.png';
 import starterDarkImg from 'assets/img/spot-illustrations/dark_2.png';
 import Button from 'components/base/Button';
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Starter = () => {
   // const { user } = useAuth0();
   const { departments, loading } = useDepartments();
-console.log(departments);
+  console.log(departments);
 
   return (
     <Stack className="flex-center content-min-h">

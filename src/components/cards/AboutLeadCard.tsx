@@ -27,20 +27,18 @@ interface LeadProfileCardProps {
   DOB?: string;
   Blood_Group?: string;
   User_Id?: number;
-
 }
-
 
 const AboutLeadCard = ({
   className,
-  login_name = "login_name",
-  Personal_Email = "Personal_Email",
-  Secondary_Email="Secondary_Email",
-  Registered_On= "00-00-00",
-  Mobile='987654321',
-  DOB= "00-00-00",
-  Blood_Group="Unknown",
-  User_Id=-1
+  login_name = 'login_name',
+  Personal_Email = 'Personal_Email',
+  Secondary_Email = 'Secondary_Email',
+  Registered_On = '00-00-00',
+  Mobile = '987654321',
+  DOB = '00-00-00',
+  Blood_Group = 'Unknown',
+  User_Id = -1
 }: LeadProfileCardProps) => {
   return (
     <Card className={classNames(className)}>
@@ -52,12 +50,20 @@ const AboutLeadCard = ({
           </Button>
         </div>
         <LeadInfoItem className="mb-4" label="Login Name" icon={UilEnvelopeAlt}>
-        <p className="mb-0 text-body-secondary">{login_name}</p>
+          <p className="mb-0 text-body-secondary">{login_name}</p>
         </LeadInfoItem>
-        <LeadInfoItem className="mb-4" label="Personal Email" icon={UilEnvelopeAlt}>
+        <LeadInfoItem
+          className="mb-4"
+          label="Personal Email"
+          icon={UilEnvelopeAlt}
+        >
           <Link to="mailto:ansolo5@jeemail.com">{Personal_Email}</Link>
         </LeadInfoItem>
-        <LeadInfoItem className="mb-4" label="Secondry Email" icon={UilEnvelopeAlt}>
+        <LeadInfoItem
+          className="mb-4"
+          label="Secondry Email"
+          icon={UilEnvelopeAlt}
+        >
           <Link to="mailto:ansolo5@jeemail.com">{Secondary_Email}</Link>
         </LeadInfoItem>
         <LeadInfoItem className="mb-4" label="Phone" icon={UilPhone}>
@@ -80,8 +86,6 @@ const AboutLeadCard = ({
         <LeadInfoItem className="mb-4" label="User ID" icon={UilBuilding}>
           <p className="mb-0 text-body-secondary">{User_Id}</p>
         </LeadInfoItem>
-
-      
       </Card.Body>
     </Card>
   );

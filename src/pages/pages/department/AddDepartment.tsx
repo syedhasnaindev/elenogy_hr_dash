@@ -2,12 +2,18 @@ import { useState } from 'react';
 import { createDepartment } from '../../../services/departmentService';
 import { useNavigate } from 'react-router-dom';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
+import {
+  TextField,
+  Button,
+  CircularProgress,
+  Box,
+  Typography
+} from '@mui/material';
 
 const AddDepartment = () => {
   const [departmentData, setDepartmentData] = useState({
-    name: '',
-    description: '',
-    // Add other fields as necessary
+    Department_Name: '',
+    Description: ''
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -22,7 +28,7 @@ const AddDepartment = () => {
     setLoading(true);
     try {
       await createDepartment(departmentData);
-      navigate('/departments'); // Redirect to departments list
+      navigate('/analogy/departments/add-department'); // Redirect to departments list
     } catch (error) {
       console.error('Failed to create department:', error);
     } finally {
@@ -31,37 +37,65 @@ const AddDepartment = () => {
   };
 
   return (
-    <div>
+    <Box
+      sx={{
+        width: '100%',
+        maxWidth: 600,
+        margin: '0 auto',
+        mt: 5,
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 3,
+        backgroundColor: 'background.paper'
+      }}
+    >
       <PageBreadcrumb items={[{ label: 'Add Department', active: true }]} />
-      <h2>Add Department</h2>
+      <Typography variant="h4" sx={{ mb: 2, fontWeight: 'bold' }}>
+        Add Department
+      </Typography>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Department Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={departmentData.name}
+        <Box sx={{ mb: 3 }}>
+          <TextField
+            label="Department Name"
+            name="Department_Name"
+            value={departmentData.Department_Name}
             onChange={handleChange}
+            fullWidth
+            variant="outlined"
             required
+            sx={{ mb: 2 }}
           />
-        </div>
-        <div>
-          <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={departmentData.description}
+          <TextField
+            label="Description"
+            name="Description"
+            value={departmentData.Description}
             onChange={handleChange}
+            fullWidth
+            variant="outlined"
             required
+            sx={{ mb: 2 }}
           />
-        </div>
-        {/* Add other fields as necessary */}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Adding...' : 'Add Department'}
-        </button>
+        </Box>
+
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            size="large"
+            disabled={loading}
+            sx={{ width: '100%', padding: '12px', fontSize: '16px' }}
+          >
+            {loading ? (
+              <CircularProgress size={24} color="inherit" />
+            ) : (
+              'Add Department'
+            )}
+          </Button>
+        </Box>
       </form>
-    </div>
+    </Box>
   );
 };
 
-export default AddDepartment; 
+export default AddDepartment;

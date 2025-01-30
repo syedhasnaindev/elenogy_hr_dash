@@ -1,7 +1,7 @@
 import { Stack } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useDesignation } from '../../../hooks/useDesignations';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 import starterImg from 'assets/img/spot-illustrations/2.png';
 import starterDarkImg from 'assets/img/spot-illustrations/dark_2.png';
 import Button from 'components/base/Button';
@@ -43,19 +43,19 @@ const AllDesignations = () => {
       eventKey: '1',
       label: 'View',
       type: 'function',
-      callback: () => alert('View action clicked'),
+      callback: () => alert('View action clicked')
     },
     {
       eventKey: '2',
       label: 'Export',
       type: 'function',
-      callback: () => console.log('Export action clicked'),
+      callback: () => console.log('Export action clicked')
     },
     {
       eventKey: '3',
       label: 'Go to Google',
       type: 'redirect',
-      url: 'https://www.google.com',
+      url: 'https://www.google.com'
     },
     {
       eventKey: '4',
@@ -63,8 +63,8 @@ const AllDesignations = () => {
       type: 'function',
       callback: () => alert('Remove action clicked'),
       className: 'text-danger',
-      divider: true,
-    },
+      divider: true
+    }
   ];
   // console.log(Designation
   const defaultBreadcrumbItems: PageBreadcrumbItem[] = [
@@ -85,24 +85,23 @@ const AllDesignations = () => {
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: 'Designation_ID',
-      header: 'Designation ID',
+      header: 'Designation ID'
     },
     {
       accessorKey: 'Designation_Name',
-      header: 'Designation Name',
+      header: 'Designation Name'
     },
     {
       accessorKey: 'Description',
-      header: 'Description',
+      header: 'Description'
     },
     {
       accessorKey: 'created_at',
-      header: 'Created At',
+      header: 'Created At'
     },
     {
       accessorKey: 'Department_Id',
-      header: 'Department  Id',
-      
+      header: 'Department  Id'
     },
     {
       id: 'action',
@@ -128,7 +127,7 @@ const AllDesignations = () => {
     selection: true
   });
   return (
-    <div style={{height:'100%'}}>
+    <div style={{ height: '100%' }}>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-9">
         <h2 className="mb-4">Designations</h2>
@@ -136,14 +135,13 @@ const AllDesignations = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <AdvanceTableProvider {...table} >
+          <AdvanceTableProvider {...table}>
             <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis border-top border-bottom border-translucent position-relative top-1">
-            <AdvanceTable
-              tableProps={{ className: 'phoenix-table fs-9  ' }}
-            />
-            <AdvanceTableFooter pagination />
+              <AdvanceTable
+                tableProps={{ className: 'phoenix-table fs-9  ' }}
+              />
+              <AdvanceTableFooter pagination />
             </div>
-            
           </AdvanceTableProvider>
         )}
       </div>

@@ -101,38 +101,37 @@ const ZeroRoadMapChart = ({
 
       const zoomConfig = {
         levels: [
-            {
-                name: "Hours",
-                scales: [
-                    { unit: "minute", step: 30, format: "%H:%i" }, // Example of string format
-                ],
-            },
-            {
-                name: "Days",
-                scales: [
-                    { unit: "hour", step: 1, format: "%H:%i" }, // Consistent string format
-                ],
-            },
-            {
-                name: "Weeks",
-                scales: [
-                    { unit: "day", step: 1, format: "%d %M" },
-                    { unit: "hour", step: 12, format: "%H:%i" },
-                ],
-            },
-            {
-                name: "Months",
-                scales: [
-                    { unit: "week", step: 1, format: "%W" },
-                    { unit: "day", step: 1, format: "%d %M" },
-                ],
-            },
-        ],
-    };
-    
-    // Pass the corrected config to Gantt
-    gantt.ext.zoom.init(zoomConfig);
-    
+          {
+            name: 'Hours',
+            scales: [
+              { unit: 'minute', step: 30, format: '%H:%i' } // Example of string format
+            ]
+          },
+          {
+            name: 'Days',
+            scales: [
+              { unit: 'hour', step: 1, format: '%H:%i' } // Consistent string format
+            ]
+          },
+          {
+            name: 'Weeks',
+            scales: [
+              { unit: 'day', step: 1, format: '%d %M' },
+              { unit: 'hour', step: 12, format: '%H:%i' }
+            ]
+          },
+          {
+            name: 'Months',
+            scales: [
+              { unit: 'week', step: 1, format: '%W' },
+              { unit: 'day', step: 1, format: '%d %M' }
+            ]
+          }
+        ]
+      };
+
+      // Pass the corrected config to Gantt
+      gantt.ext.zoom.init(zoomConfig);
 
       // gantt.ext.zoom.init(zoomConfig);
       gantt.ext.zoom.setLevel('week');

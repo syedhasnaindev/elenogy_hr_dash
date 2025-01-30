@@ -5,7 +5,9 @@ import AdvanceTable from 'components/base/AdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
-import RevealDropdown, { RevealDropdownTrigger } from 'components/base/RevealDropdown';
+import RevealDropdown, {
+  RevealDropdownTrigger
+} from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 
 const AllPersonalInformation = () => {
@@ -24,19 +26,19 @@ const AllPersonalInformation = () => {
       eventKey: '1',
       label: 'View',
       type: 'function',
-      callback: () => alert('View action clicked'),
+      callback: () => alert('View action clicked')
     },
     {
       eventKey: '2',
       label: 'Export',
       type: 'function',
-      callback: () => console.log('Export action clicked'),
+      callback: () => console.log('Export action clicked')
     },
     {
       eventKey: '3',
       label: 'Go to Google',
       type: 'redirect',
-      url: 'https://www.google.com',
+      url: 'https://www.google.com'
     },
     {
       eventKey: '4',
@@ -44,28 +46,28 @@ const AllPersonalInformation = () => {
       type: 'function',
       callback: () => alert('Remove action clicked'),
       className: 'text-danger',
-      divider: true,
-    },
+      divider: true
+    }
   ];
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: 'id',
-      header: 'Personal Info ID',
+      header: 'Personal Info ID'
     },
     {
       accessorKey: 'name',
-      header: 'Name',
+      header: 'Name'
     },
     {
       accessorKey: 'email',
-      header: 'Email',
+      header: 'Email'
     },
     {
       id: 'action',
       cell: () => (
         <RevealDropdownTrigger>
           <RevealDropdown>
-            <ActionDropdownItems actions={actions}/>
+            <ActionDropdownItems actions={actions} />
           </RevealDropdown>
         </RevealDropdownTrigger>
       ),
@@ -87,16 +89,16 @@ const AllPersonalInformation = () => {
 
   return (
     <div style={{ height: '100%' }}>
-      <PageBreadcrumb items={[{ label: 'Personal Information', active: true }]} />
+      <PageBreadcrumb
+        items={[{ label: 'Personal Information', active: true }]}
+      />
       <div className="mb-9">
         <h2 className="mb-4">Personal Information</h2>
         {loading ? (
           <p>Loading...</p>
         ) : (
           <AdvanceTableProvider {...table}>
-            <AdvanceTable
-              tableProps={{ className: 'phoenix-table fs-9' }}
-            />
+            <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
             <AdvanceTableFooter pagination />
           </AdvanceTableProvider>
         )}
@@ -105,4 +107,4 @@ const AllPersonalInformation = () => {
   );
 };
 
-export default AllPersonalInformation; 
+export default AllPersonalInformation;

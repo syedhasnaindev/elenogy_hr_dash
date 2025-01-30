@@ -1,7 +1,7 @@
 import { Stack } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useRoles } from '../../../hooks/useRoles';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 import starterImg from 'assets/img/spot-illustrations/2.png';
 import starterDarkImg from 'assets/img/spot-illustrations/dark_2.png';
 import Button from 'components/base/Button';
@@ -43,19 +43,19 @@ const AllRoles = () => {
       eventKey: '1',
       label: 'View',
       type: 'function',
-      callback: () => alert('View action clicked'),
+      callback: () => alert('View action clicked')
     },
     {
       eventKey: '2',
       label: 'Export',
       type: 'function',
-      callback: () => console.log('Export action clicked'),
+      callback: () => console.log('Export action clicked')
     },
     {
       eventKey: '3',
       label: 'Go to Google',
       type: 'redirect',
-      url: 'https://www.google.com',
+      url: 'https://www.google.com'
     },
     {
       eventKey: '4',
@@ -63,8 +63,8 @@ const AllRoles = () => {
       type: 'function',
       callback: () => alert('Remove action clicked'),
       className: 'text-danger',
-      divider: true,
-    },
+      divider: true
+    }
   ];
   // console.log(departments
   const defaultBreadcrumbItems: PageBreadcrumbItem[] = [
@@ -85,29 +85,27 @@ const AllRoles = () => {
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: 'Role_Id',
-      header: 'Role ID',
+      header: 'Role ID'
     },
     {
       accessorKey: 'Role_Name',
-      header: 'Role Name',
+      header: 'Role Name'
     },
     {
       accessorKey: 'Role_Type',
-      header: 'Role_Type',
+      header: 'Role_Type'
     },
     {
       accessorKey: 'created_at',
-      header: 'Created At',
+      header: 'Created At'
     },
     {
       accessorKey: 'User_Id',
-      header: 'User_Id',
-
+      header: 'User_Id'
     },
     {
       accessorKey: 'Department_Id',
-      header: 'Department_Id',
-
+      header: 'Department_Id'
     },
     {
       id: 'action',
@@ -141,14 +139,13 @@ const AllRoles = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <AdvanceTableProvider {...table} >
+          <AdvanceTableProvider {...table}>
             <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis border-top border-bottom border-translucent position-relative top-1">
               <AdvanceTable
                 tableProps={{ className: 'phoenix-table fs-9  ' }}
               />
               <AdvanceTableFooter pagination />
             </div>
-
           </AdvanceTableProvider>
         )}
       </div>

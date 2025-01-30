@@ -40,18 +40,21 @@ const Designation: React.FC<DesignationProps> = ({ value, onChange }) => {
                   type="text"
                   placeholder="Login Name"
                   value={value.Login_Name}
-                  onChange={(e) => onChange('Login_Name', e.target.value)}
+                  onChange={e => onChange('Login_Name', e.target.value)}
                 />
               </FloatingLabel>
             </Col>
             <Col sm={6} md={6}>
-              <FloatingLabel controlId="floatingInputGrid" label="Hash Password">
+              <FloatingLabel
+                controlId="floatingInputGrid"
+                label="Hash Password"
+              >
                 <Form.Control
                   type="text"
                   placeholder="Hash Password"
                   value={password}
                   disabled={true}
-                  onChange={(e) => onChange('Hash_Password', e.target.value)}
+                  onChange={e => onChange('Hash_Password', e.target.value)}
                 />
               </FloatingLabel>
             </Col>

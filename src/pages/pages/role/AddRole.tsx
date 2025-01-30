@@ -7,8 +7,8 @@ const AddRole = () => {
   const [roleData, setRoleData] = useState({
     user_id: '',
     role_name: '',
-    department_id:'',
-    role_type:'',
+    department_id: '',
+    role_type: ''
     // Add other fields as necessary
   });
   const [loading, setLoading] = useState(false);
@@ -86,4 +86,4 @@ const AddRole = () => {
   );
 };
 
-export default AddRole; 
+export default AddRole;

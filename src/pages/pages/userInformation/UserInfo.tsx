@@ -28,12 +28,14 @@ const UserInfo = () => {
       const response = await createPersonalInformation(formData);
       setSuccessMessage('Personal information created successfully!');
     } catch (error) {
-      setErrorMessage('Failed to create personal information. Please try again.');
+      setErrorMessage(
+        'Failed to create personal information. Please try again.'
+      );
       console.error(error);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   const [formData, setFormData] = useState({
     First_Name: '',
@@ -56,12 +58,11 @@ const UserInfo = () => {
     Institute_Name: '',
     Completed_On: '',
     Percentage: '',
-    Grade: '',
-
+    Grade: ''
   });
 
   const handleInputChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -78,9 +79,16 @@ const UserInfo = () => {
   };
   const handleStepContent = (step: number) => {
     switch (step) {
-      case 0: return <PersonalInfoForm value={formData} onChange={handleInputChange} />;
-      case 1: return <AddressForm value={formData} onChange={handleInputChange} />;
-      case 2: return <QualificationForm value={formData} onChange={handleInputChange} />;
+      case 0:
+        return (
+          <PersonalInfoForm value={formData} onChange={handleInputChange} />
+        );
+      case 1:
+        return <AddressForm value={formData} onChange={handleInputChange} />;
+      case 2:
+        return (
+          <QualificationForm value={formData} onChange={handleInputChange} />
+        );
       // case 1: return <AddressForm />;
       // case 2: return <PaymentForm />;
     }
@@ -92,15 +100,12 @@ const UserInfo = () => {
       <h2 className="mb-4">Create a user</h2>
       {/* <Form > */}
       <FormWizard
-
         steps={steps}
         //  optionalSteps={[1]} // Address is optional
         renderStepContent={handleStepContent}
         onFinish={() => submitForm()}
       />
       {/* </Form> */}
-
-
     </div>
   );
 };

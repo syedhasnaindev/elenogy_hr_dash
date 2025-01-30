@@ -22,7 +22,7 @@ export const usePersonalInformation = () => {
   }, []);
 
   return { personalInformation, loading };
-}; 
+};
 
 export const usePersonalInformationById = (id: any) => {
   const [personalInformation, setPersonalInformation] = useState<any[]>([]);
@@ -44,4 +44,4 @@ export const usePersonalInformationById = (id: any) => {
   }, []);
 
   return { personalInformation, loading };
-}; 
+};

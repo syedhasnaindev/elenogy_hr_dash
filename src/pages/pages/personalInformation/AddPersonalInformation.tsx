@@ -6,7 +6,7 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 const AddPersonalInformation = () => {
   const [personalInfoData, setPersonalInfoData] = useState({
     name: '',
-    email: '',
+    email: ''
     // Add other fields as necessary
   });
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,9 @@ const AddPersonalInformation = () => {
 
   return (
     <div>
-      <PageBreadcrumb items={[{ label: 'Add Personal Information', active: true }]} />
+      <PageBreadcrumb
+        items={[{ label: 'Add Personal Information', active: true }]}
+      />
       <h2>Add Personal Information</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -64,4 +66,4 @@ const AddPersonalInformation = () => {
   );
 };
 
-export default AddPersonalInformation; 
+export default AddPersonalInformation;

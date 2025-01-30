@@ -6,7 +6,7 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 const AddSalary = () => {
   const [salaryData, setSalaryData] = useState({
     amount: '',
-    employeeId: '',
+    employeeId: ''
     // Add other fields as necessary
   });
   const [loading, setLoading] = useState(false);
@@ -64,4 +64,4 @@ const AddSalary = () => {
   );
 };
 
-export default AddSalary; 
+export default AddSalary;

@@ -6,7 +6,7 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 const AddQualification = () => {
   const [qualificationData, setQualificationData] = useState({
     name: '',
-    description: '',
+    description: ''
     // Add other fields as necessary
   });
   const [loading, setLoading] = useState(false);
@@ -64,4 +64,4 @@ const AddQualification = () => {
   );
 };
 
-export default AddQualification; 
+export default AddQualification;

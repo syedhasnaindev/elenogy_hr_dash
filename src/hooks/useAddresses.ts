@@ -21,4 +21,4 @@ export const useAddresses = () => {
   }, []);
 
   return { addresses, loading };
-}; 
+};

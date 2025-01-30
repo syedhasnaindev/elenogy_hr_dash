@@ -39,7 +39,7 @@ const UserQualifications = ({
               Edit
             </Button>
           </div>
-          {qualifications.map((qualification) => (
+          {qualifications.map(qualification => (
             <div key={qualification.Education_ID} className="mb-5">
               <LeadInfoItem
                 className="mb-4"

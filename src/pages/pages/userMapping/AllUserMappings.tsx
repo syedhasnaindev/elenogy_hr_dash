@@ -5,7 +5,9 @@ import AdvanceTable from 'components/base/AdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
-import RevealDropdown, { RevealDropdownTrigger } from 'components/base/RevealDropdown';
+import RevealDropdown, {
+  RevealDropdownTrigger
+} from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import { aC } from '@fullcalendar/core/internal-common';
 
@@ -25,19 +27,19 @@ const AllUserMappings = () => {
       eventKey: '1',
       label: 'View',
       type: 'function',
-      callback: () => alert('View action clicked'),
+      callback: () => alert('View action clicked')
     },
     {
       eventKey: '2',
       label: 'Export',
       type: 'function',
-      callback: () => console.log('Export action clicked'),
+      callback: () => console.log('Export action clicked')
     },
     {
       eventKey: '3',
       label: 'Go to Google',
       type: 'redirect',
-      url: 'https://www.google.com',
+      url: 'https://www.google.com'
     },
     {
       eventKey: '4',
@@ -45,21 +47,21 @@ const AllUserMappings = () => {
       type: 'function',
       callback: () => alert('Remove action clicked'),
       className: 'text-danger',
-      divider: true,
-    },
+      divider: true
+    }
   ];
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: 'id',
-      header: 'User Mapping ID',
+      header: 'User Mapping ID'
     },
     {
       accessorKey: 'userId',
-      header: 'User ID',
+      header: 'User ID'
     },
     {
       accessorKey: 'mappingDetails',
-      header: 'Mapping Details',
+      header: 'Mapping Details'
     },
     {
       id: 'action',
@@ -95,9 +97,7 @@ const AllUserMappings = () => {
           <p>Loading...</p>
         ) : (
           <AdvanceTableProvider {...table}>
-            <AdvanceTable
-              tableProps={{ className: 'phoenix-table fs-9' }}
-            />
+            <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
             <AdvanceTableFooter pagination />
           </AdvanceTableProvider>
         )}
@@ -106,4 +106,4 @@ const AllUserMappings = () => {
   );
 };
 
-export default AllUserMappings; 
+export default AllUserMappings;

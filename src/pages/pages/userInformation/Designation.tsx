@@ -4,7 +4,7 @@ import ReactSelect from 'components/base/ReactSelect';
 
 import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 // import {FormWizard} from 'components/form-wizard/FormWizard';
-import { useDesignation } from "hooks/useDesignations";
+import { useDesignation } from 'hooks/useDesignations';
 
 interface DepartmentFormProps {
   value: any;
@@ -17,20 +17,22 @@ interface Designation {
 }
 
 const Designation: React.FC<DepartmentFormProps> = ({ value, onChange }) => {
-
   // Ensure correct type usage
   const { Designation, loading } = useDesignation() as {
     Designation: Designation[] | null;
     loading: boolean;
   };
 
-  const departmentOptions = Designation?.map(Designation => ({
-    value: Designation.Designation_ID,
-    label: Designation.Designation_Name
-  })) || [];
+  const designationOptions =
+    Designation?.map(Designation => ({
+      value: Designation.Designation_ID,
+      label: Designation.Designation_Name
+    })) || [];
 
-  const handleSelectChange = (selectedOption: any) => {
-    onChange('Department_ID', selectedOption ? selectedOption.value : '');
+  const handleSelectChange1 = (selectedOption: any) => {
+    console.log('Selected option:', selectedOption); // Check the structure of selectedOption
+
+    onChange('Designation_ID', selectedOption ? selectedOption.value : '');
   };
 
   return (
@@ -41,10 +43,13 @@ const Designation: React.FC<DepartmentFormProps> = ({ value, onChange }) => {
             <Col sm={6} md={6}>
               <Form.Label>Department</Form.Label>
               <ReactSelect
-                options={departmentOptions}
-                value={departmentOptions.find(option => option.value === value.Designation_ID)}
-                onChange={handleSelectChange}
+                options={designationOptions}
+                value={designationOptions.find(
+                  option => option.value === value.Designation_ID
+                )}
+                onChange={handleSelectChange1}
                 isLoading={loading}
+                name="Designation_ID"
                 placeholder="Select Designation"
               />
             </Col>

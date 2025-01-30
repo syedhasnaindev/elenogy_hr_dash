@@ -21,66 +21,68 @@ interface UserSettingProps {
 }
 
 const UserSetting: React.FC<UserSettingProps> = ({ User_Id }) => {
-  const steps = ['Department', 'Designation', "Role", 'Salary', 'Credentials'];
-
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const submitForm = async () => {
-    // e.preventDefault();
-    setLoading(true);
-    setSuccessMessage('');
-    setErrorMessage('');
-
-    try {
-      const response = await createUserSettings(formData);
-      setSuccessMessage('Personal information created successfully!');
-    } catch (error) {
-      setErrorMessage('Failed to create personal information. Please try again.');
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const steps = ['Department', 'Designation', 'Role', 'Salary', 'Credentials'];
 
   const [formData, setFormData] = useState({
-    Department_ID: '',
-    Designation_ID: '',
-    User_Id: User_Id,
+    User_Id: User_Id, // Initialize with prop value
+    Department_ID: '', // Changed to match API expectations
+    Designation_ID: '', // Changed to match API expectations
     Login_Name: '',
     Hash_Password: '',
     Role_Name: '',
     Role_Type: '',
     Grade: '',
-    Salary:'',
-   
+    Salary: '',
+    Comment: ''
   });
 
-  const handleInputChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInputChange = (name: string, value: string | number) => {
+    console.log(`Updating ${name} with value:`, value); // Debug log
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // console.log('Form submitted:', formData);
-    // try {
-    //   const response = await axios.post('https://your-api-endpoint.com/submit', formData);
-    //   console.log('Form submitted successfully:', response.data);
-    //   alert('Form submitted successfully!');
-    // } catch (error) {
-    //   console.error('Error submitting form:', error);
-    //   alert('Failed to submit the form. Please try again.');
-    // }
+  const submitForm = async () => {
+    setLoading(true);
+    setSuccessMessage('');
+    setErrorMessage('');
+
+    console.log('Submitting form data:', formData); // Debug log
+
+    try {
+      const response = await createUserSettings({
+        ...formData,
+        User_Id: Number(User_Id) // Ensure User_Id is a number
+      });
+      setSuccessMessage('User settings created successfully!');
+    } catch (error: any) {
+      setErrorMessage(
+        error.response?.data?.message || 'Failed to create user settings'
+      );
+      console.error('Submission error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
+
   const handleStepContent = (step: number) => {
     switch (step) {
-      case 0: return <Department value={formData} onChange={handleInputChange} />;
-      case 1: return <Designation value={formData} onChange={handleInputChange} />;
-      case 2: return <Role value={formData} onChange={handleInputChange} />;
-      case 3: return <Salary value={formData} onChange={handleInputChange} />;
-      case 4: return <Credentials value={formData} onChange={handleInputChange} />;
-      // case 1: return <AddressForm />;
-      // case 2: return <PaymentForm />;
+      case 0:
+        return <Department value={formData} onChange={handleInputChange} />;
+      case 1:
+        return <Designation value={formData} onChange={handleInputChange} />;
+      case 2:
+        return <Role value={formData} onChange={handleInputChange} />;
+      case 3:
+        return <Salary value={formData} onChange={handleInputChange} />;
+      case 4:
+        return <Credentials value={formData} onChange={handleInputChange} />;
     }
   };
 
@@ -88,19 +90,16 @@ const UserSetting: React.FC<UserSettingProps> = ({ User_Id }) => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <h2 className="mb-4">Create a user</h2>
-      {/* <Form > */}
+      {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+      {successMessage && (
+        <div className="alert alert-success">{successMessage}</div>
+      )}
       <FormWizard
-
         steps={steps}
-        //  optionalSteps={[1]} // Address is optional
         renderStepContent={handleStepContent}
-        onFinish={() => submitForm()}
+        onFinish={submitForm}
       />
-      {/* </Form> */}
-
-
     </div>
   );
 };
-
 export default UserSetting;

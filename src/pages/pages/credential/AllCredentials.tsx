@@ -39,19 +39,19 @@ const AllDepartments = () => {
       eventKey: '1',
       label: 'View',
       type: 'function',
-      callback: () => alert('View action clicked'),
+      callback: () => alert('View action clicked')
     },
     {
       eventKey: '2',
       label: 'Export',
       type: 'function',
-      callback: () => console.log('Export action clicked'),
+      callback: () => console.log('Export action clicked')
     },
     {
       eventKey: '3',
       label: 'Go to Google',
       type: 'redirect',
-      url: 'https://www.google.com',
+      url: 'https://www.google.com'
     },
     {
       eventKey: '4',
@@ -59,8 +59,8 @@ const AllDepartments = () => {
       type: 'function',
       callback: () => alert('Remove action clicked'),
       className: 'text-danger',
-      divider: true,
-    },
+      divider: true
+    }
   ];
   // console.log(departments
   const defaultBreadcrumbItems: PageBreadcrumbItem[] = [
@@ -81,31 +81,30 @@ const AllDepartments = () => {
   const columns: ColumnDef<any>[] = [
     {
       accessorKey: 'User_Id',
-      header: 'User_Id',
+      header: 'User_Id'
     },
     {
       accessorKey: 'Login_Name',
-      header: 'Login_Name',
+      header: 'Login_Name'
     },
     {
       accessorKey: 'Hash_Password',
-      header: 'Hash_Password',
+      header: 'Hash_Password'
     },
     {
       accessorKey: 'created_at',
-      header: 'Created At',
+      header: 'Created At'
     },
     {
       accessorKey: 'Department_Owner_Id',
-      header: 'Department Owner Id',
-      
+      header: 'Department Owner Id'
     },
     {
       id: 'action',
       cell: () => (
         <RevealDropdownTrigger>
           <RevealDropdown>
-            <ActionDropdownItems actions={actions}/>
+            <ActionDropdownItems actions={actions} />
           </RevealDropdown>
         </RevealDropdownTrigger>
       ),
@@ -124,7 +123,7 @@ const AllDepartments = () => {
     selection: true
   });
   return (
-    <div style={{height:'100%'}}>
+    <div style={{ height: '100%' }}>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-9">
         <h2 className="mb-4">Credentials</h2>
@@ -132,14 +131,13 @@ const AllDepartments = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <AdvanceTableProvider {...table} >
+          <AdvanceTableProvider {...table}>
             <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis border-top border-bottom border-translucent position-relative top-1">
-            <AdvanceTable
-              tableProps={{ className: 'phoenix-table fs-9  ' }}
-            />
-            <AdvanceTableFooter pagination />
+              <AdvanceTable
+                tableProps={{ className: 'phoenix-table fs-9  ' }}
+              />
+              <AdvanceTableFooter pagination />
             </div>
-            
           </AdvanceTableProvider>
         )}
       </div>

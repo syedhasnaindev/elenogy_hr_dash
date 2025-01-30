@@ -4,7 +4,7 @@ import Button from 'components/base/Button';
 import AuthSocialButtons from 'components/common/AuthSocialButtons';
 import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   const { loginWithRedirect } = useAuth0();

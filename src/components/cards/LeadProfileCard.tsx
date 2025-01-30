@@ -14,11 +14,11 @@ interface LeadProfileCardProps {
 
 const LeadProfileCard = ({
   className,
-  name = "Default Name",
-  role = "Default Role",
-  company = "Default Company",
-  companyLink = "#",
-  avatarSrc,
+  name = 'Default Name',
+  role = 'Default Role',
+  company = 'Default Company',
+  companyLink = '#',
+  avatarSrc
 }: LeadProfileCardProps) => {
   return (
     <Card className={classNames(className)}>

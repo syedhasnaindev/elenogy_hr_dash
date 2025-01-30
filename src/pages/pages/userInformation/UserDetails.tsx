@@ -20,25 +20,31 @@ import {
   faThumbtack
 } from '@fortawesome/free-solid-svg-icons';
 import ScrollSpy from 'components/base/ScrollSpy';
-import { usePersonalInformationById } from 'hooks/usePersonalInformation'
+import { usePersonalInformationById } from 'hooks/usePersonalInformation';
 import { useParams } from 'react-router-dom';
 import UserSetting from './UserSettings';
+import Designation from './Designation';
+import DesignationCard from './DesignationCard';
+import DepartmentCard from './DepartmentCard';
+import CredentialCard from './CredentialCard';
+import RoleCard from './RoleCard';
+import SalaryCard from './SalaryCard';
 
 const UserDetails = () => {
   const [openOffcanvas, setOpenOffcanvas] = useState(false);
   const { userId } = useParams(); // Extract the dynamic parameter
-  console.log(userId, "User_Id");
+  console.log(userId, 'User_Id');
 
-  const { personalInformation, loading } = usePersonalInformationById(userId) as {
+  const { personalInformation, loading } = usePersonalInformationById(
+    userId
+  ) as {
     personalInformation: any | null;
     loading: boolean;
   };
-  console.log(personalInformation.qualification, "Personal Information");
+  console.log(personalInformation.qualification, 'Personal Information');
 
   return (
-
     <div>
-
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="pb-9">
         <Row className="align-items-center justify-content-between g-3 mb-3">
@@ -96,14 +102,19 @@ const UserDetails = () => {
                 <div className="d-flex justify-content-between align-items-center mb-2 d-md-none">
                   <h3 className="mb-0">Lead Details </h3>
                 </div>
-                <LeadProfileCard className="mb-3"
-                  name={personalInformation.First_Name + " " + personalInformation.Last_Name}
-                  role=''
-                  company=''
-                  avatarSrc='https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-cartoon-man-avatar-vector-ilustration-png-image_6111064.png'
-
+                <LeadProfileCard
+                  className="mb-3"
+                  name={
+                    personalInformation.First_Name +
+                    ' ' +
+                    personalInformation.Last_Name
+                  }
+                  role=""
+                  company=""
+                  avatarSrc="https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-cartoon-man-avatar-vector-ilustration-png-image_6111064.png"
                 />
-                <AboutLeadCard className="mb-3"
+                <AboutLeadCard
+                  className="mb-3"
                   login_name={personalInformation.Login_Name}
                   Personal_Email={personalInformation.Personal_Email}
                   Secondary_Email={personalInformation.Secondary_Email}
@@ -112,61 +123,34 @@ const UserDetails = () => {
                   DOB={personalInformation.DOB}
                   Blood_Group={personalInformation.Blood_Group}
                   User_Id={personalInformation.User_Id}
-
                 />
                 <UserQualifications
                   qualifications={personalInformation.qualification}
-                // Education_ID = {personalInformation.Qualifications.Education_ID}
-                // Degree_Type ={personalInformation.qualification[0].Degree_Type}
-                // Degree_Name={personalInformation.qualification[0].Degree_Name}
-                // Institute_Name={personalInformation.qualification[0].Institute_Name}
-                // Percentage={personalInformation.qualification[0].Percentage}
-                // Grade={personalInformation.qualification[0].Grade}
-                // User_Id={personalInformation.qualification[0].User_Id}
-                // Completed_On={personalInformation.qualification[0].Completed_On}
                 />
               </div>
             </div>
           </Col>
           <Col md={7} xl={8}>
             <div className="lead-details-container">
-              {/* <ScrollSpy>
-                <LeadDetailsNavbar />
-
-                <ScrollSpy.Content
-                  id="tasks"
-                  className="lead-details-scrollspy mb-8"
-                >
-                  <Tasks />
-                </ScrollSpy.Content>
-
-                <ScrollSpy.Content
-                  id="deals"
-                  className="lead-details-scrollspy mb-8"
-                  minTopValue={150}
-                >
-                  <LeadDeals />
-                </ScrollSpy.Content>
-
-                <ScrollSpy.Content
-                  id="emails"
-                  className="lead-details-scrollspy mb-8"
-                >
-                  <LeadEmails />
-                </ScrollSpy.Content>
-
-                <ScrollSpy.Content
-                  id="attachments"
-                  className="lead-details-scrollspy"
-                >
-                  <LeadAttachments />
-                </ScrollSpy.Content>
-              </ScrollSpy> */}
-              {(personalInformation.Designation && personalInformation.Role && personalInformation.Department) ?
-                (<div>no data</div>)  :(
-                  <UserSetting User_Id={personalInformation.User_Id} />
-                )
-            }
+              {personalInformation?.user_mappings ? (
+                <div>
+                  <DepartmentCard
+                    user_mappings={personalInformation?.user_mappings}
+                  />
+                  <DesignationCard
+                    user_mappings={personalInformation?.user_mappings}
+                  />
+                  <RoleCard role={personalInformation?.user_mappings} />
+                  <CredentialCard
+                    user_mappings={personalInformation?.user_mappings}
+                  />
+                  <SalaryCard
+                    user_mappings={personalInformation?.user_mappings}
+                  />
+                </div>
+              ) : (
+                <UserSetting User_Id={personalInformation.User_Id} />
+              )}
             </div>
           </Col>
         </Row>

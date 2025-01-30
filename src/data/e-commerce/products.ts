@@ -120,7 +120,7 @@ export const topDealsProducts: Product[] = [
     colors: 2,
     extra: 'dbrand skin available',
     extraClass: 'text-body-highlight fw-bold mb-2'
-  },
+  }
   // {
   //   id: 2,
   //   image: product1,

@@ -6,7 +6,7 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 const AddCredential = () => {
   const [credentialData, setCredentialData] = useState({
     loginName: '',
-    hashPassword: '',
+    hashPassword: ''
     // Add other fields as necessary
   });
   const [loading, setLoading] = useState(false);
@@ -64,4 +64,4 @@ const AddCredential = () => {
   );
 };
 
-export default AddCredential; 
+export default AddCredential;
