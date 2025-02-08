@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { createDesignation } from "../../../services/designationService";
-import { useNavigate } from "react-router-dom";
-import PageBreadcrumb from "components/common/PageBreadcrumb";
-import { useDepartments } from "hooks/useDepartments";
-import { Alert, Spinner } from "react-bootstrap";
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import { createDesignation } from '../../../services/designationService';
+import { useNavigate } from 'react-router-dom';
+import PageBreadcrumb from 'components/common/PageBreadcrumb';
+import { useDepartments } from 'hooks/useDepartments';
+import { Alert, Spinner } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 // Define Type for Designation Data
 interface DesignationData {
@@ -21,14 +21,14 @@ interface Department {
 
 const AddDesignation = () => {
   const [designationData, setDesignationData] = useState<DesignationData>({
-    Designation_Name: "",
-    Description: "",
-    Department_Id: "",
+    Designation_Name: '',
+    Description: '',
+    Department_Id: ''
   });
 
   const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Ensure correct type usage
   const { departments, loading: deptLoading } = useDepartments() as {
@@ -38,24 +38,29 @@ const AddDesignation = () => {
 
   const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setDesignationData((prevData) => ({ ...prevData, [name]: value }));
+    setDesignationData(prevData => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setSuccessMessage("");
-    setErrorMessage("");
+    setSuccessMessage('');
+    setErrorMessage('');
 
     try {
       await createDesignation(designationData);
-      setSuccessMessage("✅ Designation added successfully!");
-      setTimeout(() => navigate("/analogy/designations/add-designations"), 2000);
+      setSuccessMessage('✅ Designation added successfully!');
+      setTimeout(
+        () => navigate('/analogy/designations/add-designations'),
+        2000
+      );
     } catch (error) {
-      setErrorMessage("❌ Failed to create designation. Please try again.");
-      console.error("Error:", error);
+      setErrorMessage('❌ Failed to create designation. Please try again.');
+      console.error('Error:', error);
     } finally {
       setLoading(false);
     }
@@ -63,8 +68,12 @@ const AddDesignation = () => {
 
   return (
     <div className="container">
-      <PageBreadcrumb items={[{ label: "Add Designation", active: true }]} />
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+      <PageBreadcrumb items={[{ label: 'Add Designation', active: true }]} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="card p-4 shadow">
           <h2 className="mb-4">Add Designation</h2>
 
@@ -106,7 +115,7 @@ const AddDesignation = () => {
                 disabled={deptLoading}
               >
                 <option value="">Select Department</option>
-                {departments?.map((dept) => (
+                {departments?.map(dept => (
                   <option key={dept.Department_ID} value={dept.Department_ID}>
                     {dept.Department_Name}
                   </option>
@@ -114,8 +123,16 @@ const AddDesignation = () => {
               </select>
             </div>
 
-            <button type="submit" className="btn btn-primary" disabled={loading}>
-              {loading ? <Spinner animation="border" size="sm" /> : "Add Designation"}
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading}
+            >
+              {loading ? (
+                <Spinner animation="border" size="sm" />
+              ) : (
+                'Add Designation'
+              )}
             </button>
           </form>
         </div>

@@ -7,8 +7,8 @@ import React, {
   useState,
   useEffect
 } from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 interface MainLayoutContextInterface {
   contentClass: string;
@@ -24,14 +24,14 @@ export const MainLayoutContext = createContext(
 const MainLayoutProvider = ({ children }: PropsWithChildren) => {
   const [contentClass, setContentClass] = useState('');
   const [footerClass, setFooterClass] = useState('');
-  const { isAuthenticated , isLoading} = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
-      // navigate("/"); // Redirect if already logged in
-    }else{
-      // navigate('/pages/authentication/simple/sign-in')
+      navigate('/'); // Redirect if already logged in
+    } else {
+      navigate('/pages/authentication/simple/sign-in');
     }
   }, [isAuthenticated, isLoading, navigate]);
 

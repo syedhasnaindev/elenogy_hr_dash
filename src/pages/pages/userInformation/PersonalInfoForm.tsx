@@ -40,7 +40,10 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({
               </FloatingLabel>
             </Col>
             <Col sm={6} md={3}>
-              <FloatingLabel controlId="floatingSelectBloodGroup" label="Blood Group">
+              <FloatingLabel
+                controlId="floatingSelectBloodGroup"
+                label="Blood Group"
+              >
                 <Form.Select
                   value={value.Blood_Group}
                   onChange={e => onChange('Blood_Group', e.target.value)}

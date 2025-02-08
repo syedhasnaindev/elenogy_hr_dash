@@ -4,14 +4,24 @@ import Button from 'components/base/Button';
 import AuthSocialButtons from 'components/common/AuthSocialButtons';
 import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-
+import { useNavigate } from 'react-router-dom';
 const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   const { loginWithRedirect } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      navigate('/'); // Redirect if already logged in
+    } else {
+      navigate('/pages/authentication/simple/sign-in');
+    }
+  }, [isAuthenticated, isLoading, navigate]);
   return (
     <>
-      <div className="text-center mb-7">
+      {/* <div className="text-center mb-7">
         <h3 className="text-body-highlight">Sign In</h3>
         <p className="text-body-tertiary">Get access to your account</p>
       </div>
@@ -69,15 +79,17 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
       </Row>
       <Button variant="primary" className="w-100 mb-3">
         Sign In
-      </Button>
+      </Button> */}
       <div className="text-center">
-        <Link
+        {/* <Link
           to={`/pages/authentication/${layout}/sign-up`}
           className="fs-9 fw-bold"
         >
           Create an account
-        </Link>
-        <button onClick={() => loginWithRedirect()}>Log In</button>
+        </Link> */}
+        <button className="btn btn-primary" onClick={() => loginWithRedirect()}>
+          Log In
+        </button>
       </div>
     </>
   );

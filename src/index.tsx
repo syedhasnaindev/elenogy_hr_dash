@@ -21,7 +21,7 @@ root.render(
       clientId="VkBdGIFwbTkXMMoP8kcu04oWq3uN0dRT"
       authorizationParams={{
         redirect_uri:
-          'http://localhost:3000/pages/authentication/simple/sign-in',
+          'https://hr.elenogy.com/pages/authentication/simple/sign-in',
         audience: 'https://dev-isv8tpi8osjnxqi3.us.auth0.com/api/v2/',
         scope: 'openid profile email'
       }}

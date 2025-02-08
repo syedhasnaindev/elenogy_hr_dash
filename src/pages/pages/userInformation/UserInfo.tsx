@@ -56,7 +56,9 @@ const UserInfo = () => {
       await createPersonalInformation(formData);
       setSuccessMessage('🎉 Personal information created successfully!');
     } catch (error) {
-      setErrorMessage('❌ Failed to create personal information. Please try again.');
+      setErrorMessage(
+        '❌ Failed to create personal information. Please try again.'
+      );
       console.error(error);
     } finally {
       setLoading(false);
@@ -66,11 +68,15 @@ const UserInfo = () => {
   const handleStepContent = (step: number) => {
     switch (step) {
       case 0:
-        return <PersonalInfoForm value={formData} onChange={handleInputChange} />;
+        return (
+          <PersonalInfoForm value={formData} onChange={handleInputChange} />
+        );
       case 1:
         return <AddressForm value={formData} onChange={handleInputChange} />;
       case 2:
-        return <QualificationForm value={formData} onChange={handleInputChange} />;
+        return (
+          <QualificationForm value={formData} onChange={handleInputChange} />
+        );
       default:
         return null;
     }
@@ -83,12 +89,20 @@ const UserInfo = () => {
 
       {/* Success & Error Messages */}
       {successMessage && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Alert variant="success">{successMessage}</Alert>
         </motion.div>
       )}
       {errorMessage && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Alert variant="danger">{errorMessage}</Alert>
         </motion.div>
       )}
@@ -100,7 +114,11 @@ const UserInfo = () => {
           <p>Submitting...</p>
         </div>
       ) : (
-        <FormWizard steps={steps} renderStepContent={handleStepContent} onFinish={submitForm} />
+        <FormWizard
+          steps={steps}
+          renderStepContent={handleStepContent}
+          onFinish={submitForm}
+        />
       )}
     </div>
   );
