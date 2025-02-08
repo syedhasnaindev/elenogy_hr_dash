@@ -100,7 +100,7 @@ export const routes: RouteItems[] = [
         icon: 'shopping-cart',
         pages: [
           {
-            name: 'User Information',
+            name: 'Add User Information',
             active: true,
             path: 'analogy/user-info/user-info',
             pathName: 'user-info'

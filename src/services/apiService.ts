@@ -12,7 +12,7 @@ export const apiRequest = async (
 
   try {
     const response = await axios({
-      baseURL: 'http://localhost:8000/api',
+      baseURL: 'https://credeux.com/api',
       url: endpoint,
       method: method,
       data: data,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { fetchCredentials } from './../services/credentialService';
 
@@ -22,3 +23,4 @@ export const useCredentials = () => {
 
   return { credentials, loading };
 };
+/* eslint-disable @typescript-eslint/no-unused-vars */

@@ -20,10 +20,10 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({
         <Col xs={12} xl={9}>
           <Row as="form" className="g-3 mb-6">
             <Col sm={6} md={6}>
-              <FloatingLabel controlId="floatingInputGrid" label="Firts Name">
+              <FloatingLabel controlId="floatingInputGrid" label="First Name">
                 <Form.Control
                   type="text"
-                  placeholder="Firts Name"
+                  placeholder="First Name"
                   value={value.First_Name}
                   onChange={e => onChange('First_Name', e.target.value)}
                 />
@@ -40,13 +40,21 @@ const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({
               </FloatingLabel>
             </Col>
             <Col sm={6} md={3}>
-              <FloatingLabel controlId="floatingInputGrid" label="Blood Group">
-                <Form.Control
-                  type="text"
-                  placeholder="Blood Group"
+              <FloatingLabel controlId="floatingSelectBloodGroup" label="Blood Group">
+                <Form.Select
                   value={value.Blood_Group}
                   onChange={e => onChange('Blood_Group', e.target.value)}
-                />
+                >
+                  <option>Select Blood Group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </Form.Select>
               </FloatingLabel>
             </Col>
 

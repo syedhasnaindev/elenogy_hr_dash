@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { fetchAddresses } from './../services/addressService';
 
@@ -22,3 +23,4 @@ export const useAddresses = () => {
 
   return { addresses, loading };
 };
+/* eslint-disable @typescript-eslint/no-unused-vars */

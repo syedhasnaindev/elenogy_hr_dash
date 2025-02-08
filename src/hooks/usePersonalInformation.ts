@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from 'react';
 import { fetchPersonalInformation } from './../services/personalInformationService';
 import { getPersonalInformation } from './../services/personalInformationService';
@@ -45,3 +46,4 @@ export const usePersonalInformationById = (id: any) => {
 
   return { personalInformation, loading };
 };
+/* eslint-disable @typescript-eslint/no-unused-vars */
