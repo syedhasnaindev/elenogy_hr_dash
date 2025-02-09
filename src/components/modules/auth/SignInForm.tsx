@@ -12,13 +12,11 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   const { isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isLoading && isAuthenticated) {
-      navigate('/'); // Redirect if already logged in
-    } else {
-      navigate('/pages/authentication/simple/sign-in');
-    }
-  }, [isAuthenticated, isLoading, navigate]);
+  // useEffect(() => {
+  //   if (!isLoading && isAuthenticated) {
+  //     navigate('/'); // Redirect if already logged in
+  //   }
+  // }, [isAuthenticated, isLoading, navigate]);
   return (
     <>
       {/* <div className="text-center mb-7">

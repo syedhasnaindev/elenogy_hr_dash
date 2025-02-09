@@ -214,7 +214,7 @@ import AddRole from 'pages/pages/role/AddRole';
 import UserInfo from 'pages/pages/userInformation/UserInfo';
 import AllUserInfo from 'pages/pages/userInformation/AllUserInfo';
 import AddDesignation from 'pages/pages/designation/AddDesignation';
-
+import AuthGuard from 'components/AuthGuard';
 const routes: RouteObject[] = [
   {
     element: <App />,
@@ -222,9 +222,11 @@ const routes: RouteObject[] = [
       {
         path: '/',
         element: (
-          <MainLayoutProvider>
-            <MainLayout />
-          </MainLayoutProvider>
+          <AuthGuard>
+            <MainLayoutProvider>
+              <MainLayout />
+            </MainLayoutProvider>
+          </AuthGuard>
         ),
         children: [
           {

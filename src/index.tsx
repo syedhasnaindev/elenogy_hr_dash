@@ -20,10 +20,14 @@ root.render(
       domain="dev-isv8tpi8osjnxqi3.us.auth0.com"
       clientId="VkBdGIFwbTkXMMoP8kcu04oWq3uN0dRT"
       authorizationParams={{
-        redirect_uri:
-          'https://hr.elenogy.com/pages/authentication/simple/sign-in',
+        redirect_uri: 'https://hr.elenogy.com/',
         audience: 'https://dev-isv8tpi8osjnxqi3.us.auth0.com/api/v2/',
         scope: 'openid profile email'
+      }}
+      cacheLocation="localstorage"
+      useRefreshTokens={true}
+      onRedirectCallback={appState => {
+        window.location.replace(appState?.returnTo || '/'); // Redirect to intended page
       }}
     >
       <AppProvider>

@@ -5,10 +5,27 @@ import { useAppContext } from 'providers/AppProvider';
 import { useSettingsPanelContext } from 'providers/SettingsPanelProvider';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-
+import { useAuth0 } from '@auth0/auth0-react';
 const App = () => {
   const { isStylesheetLoaded } = useToggleStyle();
   const { pathname } = useLocation();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      if (isAuthenticated) {
+        try {
+          const token = await getAccessTokenSilently();
+          localStorage.setItem('token', token); // Store token in localStorage
+          // console.log('Token stored in localStorage:', token);
+        } catch (error) {
+          console.error('Error fetching Auth0 token:', error);
+        }
+      }
+    };
+
+    fetchToken();
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   const {
     settingsPanelConfig: { showSettingPanelButton },
